@@ -7,7 +7,8 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^11.9",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "mateusjunges/laravel-kafka": "^2.3"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -25,7 +26,8 @@
             "Database\\Seeders\\": "database/seeders/",
             "Kernel\\": "src/Kernel",
             "ProductManagement\\": "src/ProductManagement",
-            "SupplierManagement\\": "src/SupplierManagement"
+            "SupplierManagement\\": "src/SupplierManagement",
+            "SaleValidationManagement\\": "src/SaleValidationManagement"
         }
     },
     "autoload-dev": {

@@ -25,7 +25,7 @@ class ProductUpdateDtoMapper extends BaseMapper
         $dto = $this->getNewDto();
         $dto->supplierId = $request->supplierId;
         $dto->name = $request->name;
-        $dto->amount = $request->amount;
+        $dto->stock = $request->stock;
         $dto->active = $request->active;
 
         return $dto;

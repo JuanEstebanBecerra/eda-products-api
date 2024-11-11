@@ -33,7 +33,7 @@ class ProductController extends BaseController
         $request->validate([
             'supplierId' => ['required', 'integer', 'exists:suppliers,id'],
             'name' => ['required', 'string'],
-            'amount' => ['required', 'integer', 'min:0'],
+            'stock' => ['required', 'integer', 'min:0'],
         ]);
 
         return $this->execWithJsonResponse(function () use ($request) {
@@ -59,7 +59,7 @@ class ProductController extends BaseController
         $request->validate([
             'supplierId' => ['required', 'integer', 'exists:suppliers,id'],
             'name' => ['required', 'string'],
-            'amount' => ['required', 'integer', 'min:0'],
+            'stock' => ['required', 'integer', 'min:0'],
             'active' => ['required', 'boolean'],
         ]);
 

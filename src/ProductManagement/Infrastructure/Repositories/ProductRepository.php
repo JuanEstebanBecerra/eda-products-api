@@ -23,7 +23,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
         $id = DB::table('products')->insertGetId([
             'supplier_id' => $dto->supplierId,
             'name' => $dto->name,
-            'amount' => $dto->amount,
+            'stock' => $dto->stock,
             'created_at' => now(),
 //            'user_who_created' => $this->user->id
         ]);
@@ -44,7 +44,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
             ->update([
                 'supplier_id' => $dto->supplierId,
                 'name' => $dto->name,
-                'amount' => $dto->amount,
+                'stock' => $dto->stock,
                 'active' => $dto->active,
                 'updated_at' => now(),
 //                'user_who_updated' => $this->user->id
@@ -58,7 +58,7 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
      */
     public function getAll(): Collection
     {
-        return collect(DB::select('SELECT id, name, amount FROM products'));
+        return collect(DB::select('SELECT id, name, stock FROM products'));
     }
 
     /**

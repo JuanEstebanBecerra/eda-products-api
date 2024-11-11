@@ -29,7 +29,7 @@ class ProductDto extends BaseDto
     /**
      * @var int
      */
-    public int $amount;
+    public int $stock;
 
     /**
      * @var bool

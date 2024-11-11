@@ -24,7 +24,7 @@ class ProductDtoMapper extends BaseMapper
     {
         $dto = $this->getNewDto();
         $dto->name = $dbRecord->name;
-        $dto->amount = $dbRecord->amount;
+        $dto->stock = $dbRecord->stock;
 
         return $dto;
     }
