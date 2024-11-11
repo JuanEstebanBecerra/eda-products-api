@@ -1,8 +1,7 @@
 <?php
 
-
 return [
     App\Providers\AppServiceProvider::class,
-    Spatie\Permission\PermissionServiceProvider::class,
-    \Auth\Infrastructure\Providers\AuthServiceProvider::class
+    \ProductManagement\ProductManagementServiceProvider::class,
+    \SupplierManagement\SupplierManagementServiceProvider::class
 ];

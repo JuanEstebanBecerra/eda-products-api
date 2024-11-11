@@ -1,9 +1,6 @@
 version: "3.9"
 
 services:
-  intranet:
+  products-nginx:
     ports:
-      - "9000:9000"
-  nginx:
-    ports:
-      - "8080:80"
+      - "9080:80"

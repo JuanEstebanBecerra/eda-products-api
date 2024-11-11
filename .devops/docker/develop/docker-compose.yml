@@ -1,24 +1,24 @@
 version: '4.2'
 
 services:
-    nginx:
+    products-nginx:
         image: nginx:alpine
-        container_name: webhooks-nginx
+        container_name: products-nginx
         volumes:
             - ../../../:/var/www/app
             - ./nginx/conf.d/:/etc/nginx/conf.d/
         networks:
-            - webhooks
+            - events-network
 
-    intranet:
-        container_name: webhooks-intranet
+    products-api:
+        container_name: products-api
         build: .
         volumes:
             - ../../../:/var/www/app
         working_dir: /var/www/app
         networks:
-            - webhooks
+            - events-network
 
 networks:
-    webhooks:
+    events-network:
         external: true
