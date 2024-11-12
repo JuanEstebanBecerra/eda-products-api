@@ -56,5 +56,9 @@ RUN git clone https://github.com/edenhill/librdkafka.git \
     && make \
     && make install \
     && pecl install rdkafka \
-    && docker-php-ext-enable rdkafka \
+    && docker-php-ext-enable rdkafka
+
+RUN docker-php-ext-configure pcntl --enable-pcntl \
+  && docker-php-ext-install \
+    pcntl
 

@@ -64,3 +64,20 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Commands
+
+- Websocket connection
+```bash
+php artisan reverb:start --debug
+  ```
+
+- Kafka connection
+```bash
+php artisan kafka:consume-1
+  ```
+
+- Queue
+```bash
+php artisan queue:listen
+  ```

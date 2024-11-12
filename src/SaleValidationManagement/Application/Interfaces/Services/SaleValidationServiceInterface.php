@@ -16,4 +16,9 @@ interface SaleValidationServiceInterface
      * @return bool
      */
     public function getIsSaleValid(): bool;
+
+    /**
+     * @return array
+     */
+    public function getUpdatedProducts(): array;
 }

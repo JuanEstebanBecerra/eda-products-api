@@ -58,7 +58,16 @@ class ProductRepository extends BaseRepository implements ProductRepositoryInter
      */
     public function getAll(): Collection
     {
-        return collect(DB::select('SELECT id, name, stock FROM products'));
+        return collect(DB::select('SELECT
+                products.id,
+                products.name,
+                products.stock,
+                suppliers.name as supplier_name,
+                suppliers.id as supplier_id
+        FROM products
+            inner join suppliers
+                on products.supplier_id = suppliers.id
+        order by products.id'));
     }
 
     /**

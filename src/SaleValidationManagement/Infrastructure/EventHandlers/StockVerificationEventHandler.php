@@ -2,6 +2,7 @@
 
 namespace SaleValidationManagement\Infrastructure\EventHandlers;
 
+use App\Events\ProductUpdated;
 use Carbon\Exceptions\Exception;
 use Junges\Kafka\Contracts\ConsumerMessage;
 use Junges\Kafka\Contracts\MessageConsumer;
@@ -60,9 +61,18 @@ class StockVerificationEventHandler implements StockVerificationEventHandlerInte
      */
     public function onGetMessage(array $message): void
     {
+        $this->saleValidationService
+            ->validateProducts($message['data']['products']);
+
         $isValid = $this->saleValidationService
-            ->validateProducts($message['data']['products'])
             ->getIsSaleValid();
+
+        if($isValid) {
+            $updatedProducts = $this->saleValidationService
+                ->getUpdatedProducts();
+
+            ProductUpdated::dispatch($updatedProducts);
+        }
 
         var_dump($isValid);
 

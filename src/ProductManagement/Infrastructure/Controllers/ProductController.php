@@ -2,6 +2,7 @@
 
 namespace ProductManagement\Infrastructure\Controllers;
 
+use App\Events\ProductUpdated;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Kernel\Infrastructure\Controllers\BaseController;

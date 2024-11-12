@@ -10,9 +10,20 @@ use SaleValidationManagement\Infrastructure\Interfaces\Repositories\ProductRepos
 
 class SaleValidationService implements SaleValidationServiceInterface
 {
+    /**
+     * @var bool
+     */
     private bool $isSaleValid = true;
 
+    /**
+     * @var ProductRepositoryInterface
+     */
     private ProductRepositoryInterface $productRepository;
+
+    /**
+     * @var array
+     */
+    private array $updatedProducts = [];
 
     public function __construct(ProductRepositoryInterface $productRepository)
     {
@@ -26,6 +37,7 @@ class SaleValidationService implements SaleValidationServiceInterface
     public function validateProducts(array $products): self
     {
         $this->isSaleValid = true;
+        $this->updatedProducts = [];
         DB::beginTransaction();
         try {
             foreach ($products as $product) {
@@ -63,6 +75,11 @@ class SaleValidationService implements SaleValidationServiceInterface
             return;
         }
 
+        $this->updatedProducts[] = [
+            'productId' => $product['productId'],
+            'stock' => $stock - $product['amount']
+        ];
+
         $this->productRepository->updateStock(
             $product['productId'],
             $stock - $product['amount']
@@ -75,5 +92,13 @@ class SaleValidationService implements SaleValidationServiceInterface
     public function getIsSaleValid(): bool
     {
         return $this->isSaleValid;
+    }
+
+    /**
+     * @return array
+     */
+    public function getUpdatedProducts(): array
+    {
+        return $this->updatedProducts;
     }
 }

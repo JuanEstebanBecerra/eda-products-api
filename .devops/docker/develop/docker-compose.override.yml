@@ -4,3 +4,6 @@ services:
   products-nginx:
     ports:
       - "9080:80"
+  products-api:
+    ports:
+      - "9090:9090"
